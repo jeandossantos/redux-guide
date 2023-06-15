@@ -1,14 +1,26 @@
-import { AiOutlinePlus, AiOutlineMinus, AiOutlineClose } from "react-icons/ai";
-
+import { AiOutlinePlus, AiOutlineMinus, AiOutlineClose } from 'react-icons/ai';
+import { useCart } from '../../hooks/useCart.js';
 // Styles
-import * as Styles from "./cart-item.styles";
+import * as Styles from './styles';
 
 const CartItem = ({ product }) => {
-  const handleRemoveClick = () => {};
+  const {
+    removeProductFromCart,
+    increaseProductQuantity,
+    decreaseProductQuantity,
+  } = useCart();
 
-  const handleIncreaseClick = () => {};
+  const handleRemoveClick = () => {
+    removeProductFromCart(product.id);
+  };
 
-  const handleDecreaseClick = () => {};
+  const handleIncreaseClick = () => {
+    increaseProductQuantity(product.id);
+  };
+
+  const handleDecreaseClick = () => {
+    decreaseProductQuantity(product.id);
+  };
 
   return (
     <Styles.CartItemContainer>
