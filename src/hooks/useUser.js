@@ -1,17 +1,14 @@
 import { useDispatch } from 'react-redux';
-import userActionTypes from '../redux/user/actionTypes.js';
+import * as slice from '../redux/user/userSlice.js';
 
 export function useUser() {
   const dispatch = useDispatch();
 
   const login = (payload) => {
-    dispatch({
-      type: userActionTypes.LOGIN,
-      payload,
-    });
+    dispatch(slice.login(payload));
   };
 
-  const logout = () => dispatch({ type: userActionTypes.LOGOUT });
+  const logout = () => dispatch(slice.logout());
 
   return {
     login,

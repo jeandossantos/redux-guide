@@ -1,35 +1,24 @@
 import { useDispatch } from 'react-redux';
-import cartActionTypes from '../redux/cart/actionTypes.js';
+
+import * as slice from '../redux/cart/cartSlice.js';
 
 export function useCart() {
   const dispatch = useDispatch();
 
   const addProductToCart = (payload) => {
-    dispatch({
-      type: cartActionTypes.ADD_PRODUCT,
-      payload,
-    });
+    dispatch(slice.addProduct(payload));
   };
 
   const removeProductFromCart = (payload) => {
-    dispatch({
-      type: cartActionTypes.REMOVE_PRODUCT,
-      payload,
-    });
+    dispatch(slice.removeProductFromCart(payload));
   };
 
   const increaseProductQuantity = (payload) => {
-    dispatch({
-      type: cartActionTypes.INCREASE_PRODUCT_QUANTITY,
-      payload,
-    });
+    dispatch(slice.increaseProductQuantity(payload));
   };
 
   const decreaseProductQuantity = (payload) => {
-    dispatch({
-      type: cartActionTypes.DECREASE_PRODUCT_QUANTITY,
-      payload,
-    });
+    dispatch(slice.decreaseProductQuantity(payload));
   };
 
   return {
